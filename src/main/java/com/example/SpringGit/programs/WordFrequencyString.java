@@ -12,7 +12,7 @@ public class WordFrequencyString {
 
     public static void main(String[] args) {
 
-        String str = "hello world java space hello nick main branch edit";
+        String str = "hello world java space hello nick feature branch edit";
         String[] words = str.split(" ");
 
         //old skool way
