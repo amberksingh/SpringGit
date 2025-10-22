@@ -12,7 +12,7 @@ public class DuplicateWordCount {
 
     public static void main(String[] args) {
 
-        String str = "hellO great morning hello world night great people people GREAT NIGHT EAGLE world eat";
+        String str = "hellO great papaya hello papaya night great people people GREAT NIGHT EAGLE main world eat";
         String[] words = str.toLowerCase().split(" ");
         
         //using Collectors.groupingBy
