@@ -38,7 +38,7 @@ public class MoveZeroesToEnd {
                 .collect(Collectors.toList()));
         List<Integer> list = Collections.nCopies(nums.length - nonZeroList.size(), 0);
         nonZeroList.addAll(list);
-        System.out.println("nonZeroList = " + nonZeroList);
+        System.out.println("Collections.nCopies way = " + nonZeroList);
 
         //Stream concat
         List<Integer> list1 = IntStream.concat(
@@ -47,14 +47,14 @@ public class MoveZeroesToEnd {
                 )
                 .boxed()
                 .toList();
-        System.out.println("list1 = " + list1);
+        System.out.println("Stream concat way = " + list1);
 
-        //
+        //CopyOnWriteArrayList way
         CopyOnWriteArrayList<Integer> copy = new CopyOnWriteArrayList<>(Arrays.stream(nums).filter(n -> n != 0).boxed().toList());
         for (int i = 0; i < nums.length - copy.size(); i++) {
             copy.add(0);
         }
-        System.out.println("copy = " + copy);
+        System.out.println("CopyOnWriteArrayList way = " + copy);
 
     }
 }
