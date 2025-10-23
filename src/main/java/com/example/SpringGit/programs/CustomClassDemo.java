@@ -1,9 +1,10 @@
 package com.example.SpringGit.programs;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BinaryOperator;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 class Hero {
     String name;
@@ -81,6 +82,119 @@ public class CustomClassDemo {
                 .sum();
         System.out.println("sumOfSalaries = " + sumOfSalaries);
 
+        //sort by rank ascending
+        List<Hero> sortedAscRank = heroes.stream()
+                .sorted(Comparator.comparingInt(Hero::getRank))
+                .toList();
+        System.out.println("sortedAscRank = " + sortedAscRank);
+
+        //sort by rank descending
+        List<Hero> sortedDescRank = heroes.stream()
+                .sorted(Comparator.comparing(Hero::getRank, Comparator.reverseOrder()))
+                .toList();
+        System.out.println("sortedDescRank = " + sortedDescRank);
+
+        //sort lexicographically comparison by name
+        //IntFunction<Hero[]> intFunction = (i) -> new Hero[i];
+        Hero[] heroArray = heroes.stream()
+                .sorted(Comparator.comparing(Hero::getName))
+                .toArray(Hero[]::new);
+        System.out.println("heroArray = " + Arrays.toString(heroArray));
+
+        //group by gender
+        Map<String, List<Hero>> genderGroupingBy = heroes.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Hero::getGender
+                        )
+                );
+
+        System.out.println("grouped by gender : ");
+        genderGroupingBy.forEach((key, value) -> System.out.println(key + " -> " + value));
+
+        //count by gender
+        System.out.println("count by gender : ");
+        heroes.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Hero::getGender,
+                                Collectors.counting()
+                        )
+                )
+                .entrySet()
+                .stream()
+                .forEach(entry -> System.out.println(entry.getKey() + " -> " + entry.getValue()));
+
+        //sum of salaries by gender
+        Map<String, Double> sumOfSalariesByGender = heroes.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Hero::getGender,
+                                Collectors.summingDouble(Hero::getSalary)
+                        )
+                );
+        System.out.println("sum of salaries by gender : ");
+        Set<Map.Entry<String, Double>> entries = sumOfSalariesByGender.entrySet();
+        for (Map.Entry<String, Double> entry : entries) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        //thenComparing-first by salary and then by rank
+        Comparator<Hero> heroComparator = Comparator.comparingDouble(Hero::getSalary)
+                .thenComparing(Comparator.comparingInt(Hero::getRank));
+        Comparator<Hero> heroComparator1 = Comparator.comparingDouble(Hero::getSalary)
+                .thenComparingInt(Hero::getRank);
+        List<Hero> list = heroes.stream()
+                .sorted(heroComparator1)
+                .toList();
+        System.out.println("thenComparing-first by salary and then by rank = " + list);
+
+        //by gender ->  mapped to list of names
+        System.out.println("by gender ->  mapped to list of names");
+        Map<String, List<String>> genderWiseMappedToNamesList = heroes.stream()
+                .collect(
+                        Collectors.groupingBy(
+                                Hero::getGender,
+                                Collectors.mapping(
+                                        Hero::getName,
+                                        Collectors.toList()
+                                )
+                        )
+                );
+        System.out.println("genderWiseMappedToNamesList = " + genderWiseMappedToNamesList);
+
+        //toMap
+        //map names to salary
+        Map<String, Double> collect = heroes.stream()
+                .collect(
+                        Collectors.toMap(
+                                Hero::getName,
+                                Hero::getSalary
+                        )
+                );
+        System.out.println("map names to salary : ");
+        Set<Map.Entry<String, Double>> nameToSalary = collect.entrySet();
+        for (Map.Entry<String, Double> entry : nameToSalary) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        //partitioningBy
+        //map gender wise to names
+        Predicate<Hero> heroPredicate = (hero) -> hero.getGender().equalsIgnoreCase("male");
+        Map<Boolean, List<String>> collect1 = heroes.stream()
+                .collect(
+                        Collectors.partitioningBy(
+                                heroPredicate,
+                                Collectors.mapping(
+                                        Hero::getName,
+                                        Collectors.toList()
+                                )
+                        )
+                );
+        HashMap<String, List<String>> names = new HashMap<>();
+        names.put("male", collect1.get(true));
+        names.put("female", collect1.get(false));
+        System.out.println("map gender to names : " + names);
 
     }
 }
