@@ -71,7 +71,7 @@ public class CustomClassDemo {
         Optional<Hero> reduce = heroes.stream()
                 .reduce(BinaryOperator.maxBy(Comparator.comparingDouble(Hero::getSalary)));
         if (reduce.isPresent())
-            System.out.println("highestSalary on main branch using reduce main branch = " + reduce.get().getSalary());
+            System.out.println("highestSalary on feature branch using reduce feature branch = " + reduce.get().getSalary());
         else
             System.out.println("Invalid data");
 
