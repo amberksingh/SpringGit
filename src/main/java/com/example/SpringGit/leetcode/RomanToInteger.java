@@ -72,7 +72,7 @@ public class RomanToInteger {
                 sum += map.get(s.charAt(i));
             }
         }
-        System.out.println("Integer for Roman " + s + "  = " + sum);
+        System.out.println("[Feature] Roman numeral " + s + " converts to " + sum);
 
     }
 
