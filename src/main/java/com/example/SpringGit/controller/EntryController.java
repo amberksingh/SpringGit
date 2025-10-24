@@ -11,7 +11,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("git")
 public class EntryController {
 
-//    @PostMapping("/post")
+    //    @PostMapping("/post")
 //    public ResponseEntity<Question> post(@RequestBody @Valid Question question) {
 //        System.out.println("inside /post");
 //        return new ResponseEntity<>(repo.save(question), CREATED);
@@ -31,6 +31,7 @@ public class EntryController {
         System.out.println("Inside retryDemo() controller...");
         service.retryService();
     }
+
     @GetMapping("/payment/{paymentNum}")
     public void retryPayment(@PathVariable("paymentNum") String paymentId) {
         System.out.println("Inside retryPayment() controller...");
@@ -41,5 +42,11 @@ public class EntryController {
     public void retryRefund(@PathVariable("refundNum") Long refundId) {
         System.out.println("Inside retryRefund() controller...");
         service.retryRefund(refundId);
+    }
+
+    @GetMapping("/arithmetic/{value}")
+    public ResponseEntity<String> simulateArithmeticException(@PathVariable String value) {
+        System.out.println("Inside simulateArithmeticException() controller...");
+        return service.simulateArithmeticException(value);
     }
 }

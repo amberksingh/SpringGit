@@ -1,5 +1,6 @@
 package com.example.SpringGit.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
@@ -13,6 +14,7 @@ public class ApiService {
     int paymentAttempt = 1;
     int refundAttempt = 1;
     int genericAttempt = 1;
+    int arithmeticAttempt = 1;
 
     @Retryable(retryFor = {RuntimeException.class}, maxAttempts = 2, backoff = @Backoff(value = 2000))
     public void retryService() {
@@ -38,21 +40,50 @@ public class ApiService {
         throw new RuntimeException("retryRefund exception..");
     }
 
+    @Retryable(retryFor = {ArithmeticException.class}, maxAttempts = 3, backoff = @Backoff(value = 2000))
+    public ResponseEntity<String> simulateArithmeticException(String value) {
+
+        System.out.println("Inside simulateArithmeticException attempt : " + arithmeticAttempt);
+        arithmeticAttempt++;
+        if (Integer.parseInt(value) < 10) {
+            throw new ArithmeticException("value less than 10");
+        } else {
+            return new ResponseEntity<>("Success", HttpStatus.CREATED);
+        }
+    }
+
     @Recover
     public void recoverPayment(RuntimeException e, String paymentId) {
+
         System.out.println("Inside recoverPayment().." + paymentId);
         System.out.println("Exception : " + e.getMessage());
     }
 
     @Recover
     public void recoverRefund(RuntimeException e, Long refundId) {
+
         System.out.println("Inside recoverRefund().." + refundId);
         System.out.println("Exception : " + e.getMessage());
     }
 
     @Recover
     public void recover(RuntimeException e) {
+
         System.out.println("Generic recover for unhandled retryable methods");
         System.out.println("Exception : " + e.getMessage());
+    }
+
+
+    @Recover
+    public ResponseEntity<String> recoverSimulate(ArithmeticException e) {
+
+        System.out.println("ArithmeticException simulate recover method");
+        System.out.println("Exception : " + e.getMessage());
+        try {
+            return new ResponseEntity<>("Arithmetic Exception occurred", HttpStatus.BAD_REQUEST);
+        } catch (ArithmeticException a) {
+            System.out.println("Inside catch of ArithmeticException recoverSimulate()");
+        }
+        return new ResponseEntity<>("Finally of ArithmeticException recoverSimulate()", HttpStatus.CREATED);
     }
 }
