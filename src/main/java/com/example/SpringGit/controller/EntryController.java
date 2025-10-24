@@ -1,5 +1,7 @@
 package com.example.SpringGit.controller;
 
+import com.example.SpringGit.service.ApiService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +16,30 @@ public class EntryController {
 //        System.out.println("inside /post");
 //        return new ResponseEntity<>(repo.save(question), CREATED);
 //    }
+    @Autowired
+    private ApiService service;
 
-    @GetMapping("/get")
+    @GetMapping("/welcome")
     public ResponseEntity<String> get() {
 
         System.out.println("Inside get() method...");
         return ResponseEntity.ok("Inside get() method...");
+    }
+
+    @GetMapping("/retry-demo")
+    public void retryDemo() {
+        System.out.println("Inside retryDemo() controller...");
+        service.retryService();
+    }
+    @GetMapping("/payment/{paymentNum}")
+    public void retryPayment(@PathVariable("paymentNum") String paymentId) {
+        System.out.println("Inside retryPayment() controller...");
+        service.retryPayment(paymentId);
+    }
+
+    @GetMapping("/refund/{refundNum}")
+    public void retryRefund(@PathVariable("refundNum") Long refundId) {
+        System.out.println("Inside retryRefund() controller...");
+        service.retryRefund(refundId);
     }
 }
