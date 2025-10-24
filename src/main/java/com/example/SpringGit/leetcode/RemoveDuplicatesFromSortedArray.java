@@ -63,10 +63,10 @@ public class RemoveDuplicatesFromSortedArray {
                 .distinct()
                 .toList();
 
-//        LinkedHashSet<Integer> linkedHashSet = Arrays.stream(nums)
-//                .boxed()
-//                .sorted()
-//                .collect(Collectors.toCollection(LinkedHashSet::new));
+        LinkedHashSet<Integer> linkedHashSet = Arrays.stream(nums)
+                .boxed()
+                .sorted()
+                .collect(Collectors.toCollection(LinkedHashSet::new));
 
         for (int i = 0; i < integerList.size(); i++) {
             nums[i] = integerList.get(i);
