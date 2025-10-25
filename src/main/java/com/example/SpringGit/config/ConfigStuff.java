@@ -9,11 +9,11 @@ public class ConfigStuff {
 
     @PostConstruct
     void postConstruct() {
-        System.out.println("Inside postConstruct() method...");
+        System.out.println("Inside main branch postConstruct() method of configuration...");
     }
 
     @PreDestroy
     void preDestroy() {
-        System.out.println("Inside preDestroy() method...");
+        System.out.println("Inside main branch preDestroy() method of configuration...");
     }
 }
