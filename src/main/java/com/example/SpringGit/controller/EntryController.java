@@ -2,6 +2,8 @@ package com.example.SpringGit.controller;
 
 import com.example.SpringGit.service.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,13 @@ public class EntryController {
     @Autowired
     private ApiService service;
 
+    @Value("${default.name:arun}")
+    String defaultName;
+
     @GetMapping("/welcome")
     public ResponseEntity<String> get() {
 
+        System.out.println(defaultName);
         System.out.println("Inside get() method...");
         return ResponseEntity.ok("Inside get() method...");
     }

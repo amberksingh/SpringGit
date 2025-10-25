@@ -8,7 +8,9 @@ import org.springframework.retry.annotation.EnableRetry;
 @EnableRetry
 public class SpringGitApplication {
 
+
 	public static void main(String[] args) {
+
 		SpringApplication.run(SpringGitApplication.class, args);
 	}
 
