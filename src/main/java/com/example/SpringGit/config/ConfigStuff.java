@@ -9,11 +9,11 @@ public class ConfigStuff {
 
     @PostConstruct
     void postConstruct() {
-        System.out.println("Inside feature branch postConstruct() method of config...");
+        System.out.println("Inside stash on main branch postConstruct() method inside configuration class...");
     }
 
     @PreDestroy
     void preDestroy() {
-        System.out.println("Inside feature branch preDestroy() method of config...");
+        System.out.println("Inside stash on main branch preDestroy() method inside configuration class...");
     }
 }
