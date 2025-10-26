@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+//To enable CORS from frontend otherwise browser blocks it
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("git")
 public class EntryController {
@@ -55,4 +57,17 @@ public class EntryController {
         System.out.println("Inside simulateArithmeticException() controller...");
         return service.simulateArithmeticException(value);
     }
+
+    //add in config file for entire app access through frontend at http://localhost:3000
+    //@Bean
+    //    public WebMvcConfigurer corsConfigurer() {
+    //        return new WebMvcConfigurer() {
+    //            @Override
+    //            public void addCorsMappings(CorsRegistry registry) {
+    //                registry.addMapping("/**")   // allow all endpoints
+    //                        .allowedOrigins("http://localhost:3000") // frontend origin
+    //                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+    //                        .allowedHeaders("*");
+    //            }
+    //        };
 }
