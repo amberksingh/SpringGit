@@ -58,6 +58,13 @@ public class EntryController {
         return service.simulateArithmeticException(value);
     }
 
+    @GetMapping("/slow")
+    public String slowEndpoint() throws InterruptedException {
+        System.out.println("Received /slow request...");
+        Thread.sleep(5000); // 5 seconds delay (simulating a slow service)
+        return "Response after 5 seconds";
+    }
+
     //add in config file for entire app access through frontend at http://localhost:3000
     //@Bean
     //    public WebMvcConfigurer corsConfigurer() {
