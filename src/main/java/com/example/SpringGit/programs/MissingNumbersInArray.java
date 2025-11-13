@@ -40,6 +40,7 @@ public class MissingNumbersInArray {
 
         //
         int[] values = new int[]{6, 6, 5, 7, 8, 2, 3, 8};//1,4
+
         int[] oldNums = new int[]{4, 3, 2, 7, 8, 2, 3, 1};//5,6
         Set<Integer> set = Arrays.stream(oldNums).boxed().collect(Collectors.toSet());
         IntFunction<Integer[]> intFunction = (i) -> new Integer[i];

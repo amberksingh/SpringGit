@@ -154,7 +154,8 @@ public class EntryControllerTest {
     //
     //So:
     //
-    //When your test performs a GET request, the actual controller endpoint runs, but any call to the service inside it goes to your mock — not the real ApiService.
+    //When your test performs a GET request, the actual controller endpoint runs, but any call to the service inside
+    // it goes to your mock — not the real ApiService.
     //
     //⚙️ 2️⃣ Flow when the test runs
     //

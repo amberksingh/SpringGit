@@ -1,4 +1,4 @@
-package com.example.SpringGit.programs;
+package com.example.SpringGit.pgmRev;
 
 import java.util.Arrays;
 
@@ -14,14 +14,13 @@ public class RemoveMatchingValueFromArray {
         int[] nums = {1, 5, 3, 6, 7, 4, 3}; //val to remove 3
         System.out.println("Initial nums array : " + Arrays.toString(nums));
         int val = 3;
-        int pos = 0;//pointer to next position to fill
+        int pos = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] != val) {
                 nums[pos] = nums[i];
                 pos++;
             }
         }
-        System.out.println("Arrays.toString(nums) = " + Arrays.toString(nums));
         System.out.println("Length of new array : " + pos);
     }
 }

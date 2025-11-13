@@ -36,4 +36,18 @@ public class EntryControllerOldWayTest {
         assertEquals("Success", result.getBody());
         verify(service).simulateArithmeticException("10");
     }
+
+    @Test
+    void shouldReturnResponseEntityDirectlyFailure() {
+//        when(service.simulateArithmeticException("10"))
+//                .thenReturn(ResponseEntity.ok("Success"));
+        when(service.simulateArithmeticException("5"))
+                .thenReturn(new ResponseEntity<>("Recovery: Invalid arithmetic value. ", HttpStatus.BAD_REQUEST));
+
+        ResponseEntity<String> result = controller.simulateArithmeticException("5");
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+        assertEquals("Recovery: Invalid arithmetic value. ", result.getBody());
+        verify(service).simulateArithmeticException("5");
+    }
 }

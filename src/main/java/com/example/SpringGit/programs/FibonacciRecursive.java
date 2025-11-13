@@ -38,7 +38,8 @@ public class FibonacciRecursive {
     }
 }
 
-//Excellent 👏 — let’s dry run your recursive Fibonacci method step by step for n = 5, and clearly show how the recursion expands and resolves.
+//Excellent 👏 — let’s dry run your recursive Fibonacci method step by step for n = 5, and clearly show how
+// the recursion expands and resolves.
 //
 //🧩 1️⃣ The code recap
 //static int fib(int n) {

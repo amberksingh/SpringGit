@@ -33,6 +33,7 @@ public class OrderFulfillmentService {
 
     //synchronous
     public Order processOrder(Order order) throws InterruptedException {
+
         order.setTrackingId(UUID.randomUUID().toString());
         if (inventoryService.checkProductAvailability(order.getProductId())) {
             //handle exception here

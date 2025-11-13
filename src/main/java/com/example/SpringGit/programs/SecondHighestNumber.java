@@ -7,7 +7,7 @@ public class SecondHighestNumber {
 
     public static void main(String[] args) {
 
-        List<Integer> list = List.of(10, 20, 30, 77, 110, 44, 5, 9, 98, 12, 110);
+        List<Integer> list = List.of(10, 20, 30, 77, 100, 44, 5, 9, 98, 12, 110);
         Integer second = list.stream()
                 .distinct()
                 .sorted(Comparator.reverseOrder())

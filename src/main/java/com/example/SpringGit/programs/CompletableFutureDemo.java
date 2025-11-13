@@ -8,7 +8,8 @@ public class CompletableFutureDemo {
 
         CompletableFuture<Integer> f = CompletableFuture.supplyAsync(() -> 5);
         CompletableFuture<Integer> next = f.thenApply(x -> x * 2);
-        System.out.println("val = " + next.join());
+        Integer val = next.join();
+        System.out.println("val = " + val);
 
         CompletableFuture<Integer> f1 = CompletableFuture.supplyAsync(() -> 5);
         CompletableFuture<CompletableFuture<Integer>> nested =

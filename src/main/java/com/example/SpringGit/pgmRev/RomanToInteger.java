@@ -1,4 +1,4 @@
-package com.example.SpringGit.leetcode;
+package com.example.SpringGit.pgmRev;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,9 +53,7 @@ public class RomanToInteger {
     //s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
     //It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 
-    static void convertToInteger(String s) {
-
-        int sum = 0;
+    static void convertToInteger(String number) {
 
         Map<Character, Integer> map = new HashMap<>();
         map.put('I', 1);
@@ -66,15 +64,16 @@ public class RomanToInteger {
         map.put('D', 500);
         map.put('M', 1000);
 
-        for (int i = 0; i < s.length(); i++) {
-            if (i < s.length() - 1 && map.get(s.charAt(i)) < map.get(s.charAt(i + 1))) {
-                sum -= map.get(s.charAt(i));
+        int sum = 0;
+        char[] array = number.toCharArray();
+        for (int i = 0; i < array.length; i++) {
+            if (i < array.length - 1 && map.get(array[i]) < map.get(array[i + 1])) {
+                sum -= map.get(array[i]);
             } else {
-                sum += map.get(s.charAt(i));
+                sum += map.get(array[i]);
             }
         }
-        System.out.println("[Main] Converted value of " + s + " is " + sum);
-
+        System.out.println("Integer value of Roman :" + number + " = " + sum);
     }
 
     public static void main(String[] args) {
@@ -94,5 +93,7 @@ public class RomanToInteger {
         convertToInteger(input4);
         convertToInteger(input5);
         convertToInteger(input6);
+
     }
+
 }

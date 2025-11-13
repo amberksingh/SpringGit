@@ -20,8 +20,8 @@ public class OrderFulfillmentController {
 
     @PostMapping("/order")
     public ResponseEntity<Order> processOrder(@RequestBody Order order) throws InterruptedException {
-        service.processOrder(order); // SYNCHRONOUS
 
+        service.processOrder(order); // SYNCHRONOUS
 //        // asynchronous
 //        service.notifyUser(order);
 //        service.assignVendor(order);
