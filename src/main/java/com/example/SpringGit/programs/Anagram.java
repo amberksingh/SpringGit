@@ -12,7 +12,7 @@ public class Anagram {
         char[] array2 = s2.toLowerCase().toCharArray();
         Arrays.sort(array1);
         Arrays.sort(array2);
-        return (Arrays.equals(array1, array2));
+        return Arrays.equals(array1, array2);
     }
 
     static boolean isAnagramStreamWay(String s1, String s2) {

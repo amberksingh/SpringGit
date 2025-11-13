@@ -51,7 +51,7 @@ public class PrimeCheck {
         int num3 = 9;
         int num4 = 37;
         int num5 = 1;
-        if (isPrime(num5))
+        if (isPrime(num3))
             System.out.println("prime");
         else
             System.out.println("Not Prime");

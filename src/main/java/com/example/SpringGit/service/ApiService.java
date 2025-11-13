@@ -75,15 +75,12 @@ public class ApiService {
 
 
     @Recover
-    public ResponseEntity<String> recoverSimulate(ArithmeticException e) {
+    public ResponseEntity<String> recoverArithmeticSimulate(ArithmeticException e) {
 
         System.out.println("ArithmeticException simulate recover method");
         System.out.println("Exception : " + e.getMessage());
-        try {
-            return new ResponseEntity<>("Arithmetic Exception occurred", HttpStatus.BAD_REQUEST);
-        } catch (ArithmeticException a) {
-            System.out.println("Inside catch of ArithmeticException recoverSimulate()");
-        }
-        return new ResponseEntity<>("Finally of ArithmeticException recoverSimulate()", HttpStatus.CREATED);
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body("Recovery: Invalid arithmetic value. " + e.getMessage());
     }
 }

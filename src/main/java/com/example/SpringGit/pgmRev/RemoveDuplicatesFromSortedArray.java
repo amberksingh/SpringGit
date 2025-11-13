@@ -1,6 +1,9 @@
-package com.example.SpringGit.leetcode;
+package com.example.SpringGit.pgmRev;
 
 //26. Remove Duplicates from Sorted Array
+
+import java.util.Arrays;
+import java.util.List;
 
 //Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique
 // element appears only once. The relative order of the elements should be kept the same.
@@ -41,58 +44,39 @@ package com.example.SpringGit.leetcode;
 //It does not matter what you leave beyond the returned k (hence they are underscores).
 //
 //
-//Constraints:
+//Constraints :
 //
 //1 <= nums.length <= 3 * 104
 //-100 <= nums[i] <= 100
 //nums is sorted in non-decreasing order.
-
-import java.util.*;
-import java.util.stream.Collectors;
-
 public class RemoveDuplicatesFromSortedArray {
 
-    public int removeDuplicates(int[] nums) {
-//        nums = Arrays.stream(nums)
-//                //.distinct()
-//                .sorted()
-//                .toArray();
-        List<Integer> integerList = Arrays.stream(nums)
+    int removeDuplicates(int[] nums) {
+
+        System.out.println("original Arrays.toString(nums) = " + Arrays.toString(nums));
+        List<Integer> uniqueList = Arrays.stream(nums)
                 .boxed()
-                .sorted()
                 .distinct()
                 .toList();
+        System.out.println("uniqueList = " + uniqueList);
 
-//        LinkedHashSet<Integer> linkedHashSet = Arrays.stream(nums)
-//                .boxed()
-//                .sorted()
-//                .collect(Collectors.toCollection(LinkedHashSet::new));
-
-//        for (int x : linkedHashSet) {
-//            nums[i] = x;
-//        }
-
-        for (int i = 0; i < integerList.size(); i++) {
-            nums[i] = integerList.get(i);
+        for (int i = 0; i < uniqueList.size(); i++) {
+            nums[i] = uniqueList.get(i);
         }
 
+        System.out.println("nums = " + Arrays.toString(nums));
 
-        System.out.println("Arrays.toString(nums) = " + Arrays.toString(nums));
-        System.out.println("integerList  = " + integerList);
-//        for(int i = 0; i < expectedNumsSet.size(); i++){
-//            nums[i] = expectedNumsSet.get(i);
-//        }
-        return integerList.size();
+
+        return uniqueList.size();
     }
 
     public static void main(String[] args) {
-
         //int[] nums = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         int[] nums = {1, 1, 2};
 
         RemoveDuplicatesFromSortedArray sortedArray = new RemoveDuplicatesFromSortedArray();
+
         int k = sortedArray.removeDuplicates(nums);
         System.out.println("k = " + k);
-
     }
 }

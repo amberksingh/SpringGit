@@ -80,5 +80,10 @@ public class IntegerPrograms {
         if (reduce.isPresent())
             System.out.println("Sum using reduce : "+reduce.get());
 
+        int sum1 = Stream.of(numString.split(""))
+                .mapToInt(Integer::parseInt)
+                .sum();
+        System.out.println("sum1 = " + sum1);
+
     }
 }

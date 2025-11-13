@@ -4,11 +4,15 @@ import com.example.SpringGit.service.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+//To enable CORS from frontend otherwise browser blocks it
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("git")
 public class EntryController {
@@ -56,5 +60,24 @@ public class EntryController {
         return service.simulateArithmeticException(value);
     }
 
-    //DUMMY COMMIT FROM MACBOOK
+    @GetMapping("/slow")
+    public String slowEndpoint() throws InterruptedException {
+        System.out.println("Received /slow request...");
+        Thread.sleep(5000); // 5 seconds delay (simulating a slow service)
+        return "Response after 5 seconds";
+    }
+
+    //add in config file for entire app access through frontend at http://localhost:3000
+//    @Bean
+//        public WebMvcConfigurer corsConfigurer() {
+//            return new WebMvcConfigurer() {
+//                @Override
+//                public void addCorsMappings(CorsRegistry registry) {
+//                    registry.addMapping("/**")   // allow all endpoints
+//                            .allowedOrigins("http://localhost:3000") // frontend origin
+//                            .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                            .allowedHeaders("*");
+//                }
+//            };
+
 }
