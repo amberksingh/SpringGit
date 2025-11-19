@@ -51,9 +51,7 @@ public class MoveZeroesToEnd {
 
         //CopyOnWriteArrayList way
         CopyOnWriteArrayList<Integer> copy = new CopyOnWriteArrayList<>(Arrays.stream(nums).filter(n -> n != 0).boxed().toList());
-        for (int i = 0; i < nums.length - copy.size(); i++) {
-            copy.add(0);
-        }
+        copy.addAll(IntStream.of(nums).boxed().filter(n -> n==0).toList());
         System.out.println("CopyOnWriteArrayList way = " + copy);
 
     }

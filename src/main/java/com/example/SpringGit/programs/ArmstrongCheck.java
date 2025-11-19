@@ -85,8 +85,11 @@ public class ArmstrongCheck {
         //65 → the encoding of 'A'
         //
         //10 → the numeric interpretation of 'A' (used in base-36 or hex systems)
-        int numericValue = Character.getNumericValue(65);
-        System.out.println("numericValue = " + numericValue);//10
+        int numericValue65 = Character.getNumericValue(65);
+        System.out.println("numericValue65 A = " + numericValue65);//10
+        int numericValue97 = Character.getNumericValue(97);
+        System.out.println("numericValue97 a = " + numericValue97);//10
+
         int A = Character.getNumericValue('A');
         System.out.println("A = " + A);//10
         int a = Character.getNumericValue('a');
@@ -103,8 +106,8 @@ public class ArmstrongCheck {
         //
         //U+0001 is a control character, not a printable digit.
         //
-        //So Character.getNumericValue(1) tries to find the numeric meaning of that control character…
-        //➡️ none exists → returns -1
+        //SO CHARACTER.GETNUMERICVALUE(1) TRIES TO FIND THE NUMERIC MEANING OF THAT CONTROL CHARACTER…
+        //➡️ NONE EXISTS → RETURNS -1
         int oneNum = Character.getNumericValue(1);
         System.out.println("oneNum = " + oneNum);//-1
 
