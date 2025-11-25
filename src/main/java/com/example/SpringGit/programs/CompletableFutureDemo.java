@@ -9,7 +9,7 @@ public class CompletableFutureDemo {
         CompletableFuture<Integer> f = CompletableFuture.supplyAsync(() -> 5);
         CompletableFuture<Integer> next = f.thenApply(x -> x * 2);
         Integer val = next.join();
-        System.out.println("val = " + val);
+        System.out.println("val = " + val);//10
 
         CompletableFuture<Integer> f1 = CompletableFuture.supplyAsync(() -> 5);
         CompletableFuture<CompletableFuture<Integer>> nested =
@@ -18,7 +18,7 @@ public class CompletableFutureDemo {
 
         CompletableFuture<Integer> f2 = CompletableFuture.supplyAsync(() -> 5);
         CompletableFuture<String> chain = f2.thenCompose(x ->
-                CompletableFuture.supplyAsync(() -> String.valueOf(x)));
+                CompletableFuture.supplyAsync(() -> String.valueOf(x)));//5
         System.out.println("val = " + chain.join());//flattens similar to flatMap in streams
 
     }

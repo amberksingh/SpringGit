@@ -41,6 +41,7 @@ public class StringPrograms {
                 .filter(i -> i == 'l')
                 .count();
         System.out.println("count of l  = " + count);
+
         List<Character> list = str.chars()
                 .mapToObj(i -> (char) i)
                 .toList();
