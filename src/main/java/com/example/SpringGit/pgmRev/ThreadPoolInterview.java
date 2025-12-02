@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 
 public class ThreadPoolInterview {
 
-    //create threadpool of 3 threads and print 1 to 100 utilising all the three threads
+    //create ThreadPool of 3 threads and print 1 to 100 utilising all the three threads
     public static void main(String[] args) {
 
         ExecutorService service = Executors.newFixedThreadPool(3);
@@ -20,6 +20,19 @@ public class ThreadPoolInterview {
                 }
             });
         }
+
+        //JUST TRYING...ABOVE IS THE CORRECT WAY TO UTILISE ALL 3 THREADS
+//        service.submit(() -> {
+//            for (int i = 0; i < 100; i++) {
+//                System.out.println("loop outside...dummy num = " + i + " : " + Thread.currentThread().getName());
+//                try {
+//                    Thread.sleep(500);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        });
+
         service.shutdown();
     }
 

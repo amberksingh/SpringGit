@@ -57,6 +57,19 @@ public class OrderFulfillmentService {
         log.info("Assign order to vendor " + Thread.currentThread().getName());
         return CompletableFuture.completedFuture(null);
     }
+
+//    @Async("asyncTaskExecutor")
+//    public CompletableFuture<Void> assignVendor1(Order order) {
+//        return CompletableFuture.runAsync(() -> {
+//            try {
+//                Thread.sleep(5000);
+//                log.info("Assign order to vendor " + Thread.currentThread().getName());
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+//    }
+
     @Async("asyncTaskExecutor")
     public CompletableFuture<Void> packaging(Order order) throws InterruptedException {
         Thread.sleep(2000L);
