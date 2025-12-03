@@ -13,7 +13,7 @@ public class Factorial {
     public static void main(String[] args) {
 
         int n1 = 5;//120
-        int n2 = 1;//0
+        int n2 = 1;//1
         int n3 = 8;//40320
         int n4 = 0;//1
         int n5 = 9;//362880
