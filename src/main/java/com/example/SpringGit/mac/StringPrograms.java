@@ -3,6 +3,8 @@ package com.example.SpringGit.mac;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class StringPrograms {
@@ -250,6 +252,96 @@ public class StringPrograms {
                 .toList();
         System.out.println("list4 = " + list4);
 
+        //Find the longest and shortest word in the string
+        Comparator<String> comp1 = Comparator.comparing(String::length);
+        Comparator<String> comp2 = Comparator.comparing(String::length, Comparator.reverseOrder());
+
+        List<String> list5 = Stream.of(charStringRepeating.split(" "))
+                .sorted(comp1)
+                .toList();
+        //.collect(Collectors.joining("-", "@", "#"));
+        System.out.println("list5 = " + list5);
+
+        String min = Stream.of(charStringRepeating.split(" "))
+                .min(comp1)
+                .orElse(null);
+        String max = Stream.of(charStringRepeating.split(" "))
+                .max(comp1)
+                .orElse(null);
+        System.out.println("shortest word = " + min);
+        System.out.println("longest word = " + max);
+
+        String collect8 = Stream.of(charStringRepeating.split(" "))
+                .sorted(comp2)
+                .collect(Collectors.joining("-", "@", "#"));
+        System.out.println("desc order collect8 = " + collect8);
+
+        String collect9 = Stream.of(charStringRepeating.split(" "))
+                .sorted(comp1)
+                .collect(Collectors.joining("-", "@", "#"));
+        System.out.println("asc order collect9 = " + collect9);
+
+        //Join all the words in the string with a specific delimiter (e.g., "-")
+        List<String> list6 = Arrays.stream(charStringRepeating.split("\\s"))
+                .toList();
+        String join = String.join("-", list6);
+        System.out.println("join = " + join);
+
+        //Print only the even-indexed characters in uppercase
+        System.out.println("Print only the even-indexed characters in uppercase 1st way : ");
+        String collect10 = IntStream.range(0, charStringRepeating.length())
+                .filter(j -> j % 2 == 0)
+                .map(c1 -> charStringRepeating.charAt(c1))
+                .mapToObj(Character::toString)
+                .map(String::toUpperCase)
+                .collect(Collectors.joining());
+        System.out.println("collect10 = " + collect10);
+
+        //Check if a string is a palindrome
+        String palindrome = "level";
+        //1st way
+        boolean equals = Arrays.stream(palindrome.split(""))
+                .reduce((x1, x2) -> x2 + x1)
+                .orElse(null)
+                .equals(palindrome);
+        System.out.println("level palindrome ? = " + equals);
+        
+        //2nd way
+        boolean b = IntStream.range(0, palindrome.length() / 2)
+                .allMatch(g -> palindrome.charAt(g) == palindrome.charAt(palindrome.length() - 1 - g));
+        System.out.println("level palindrome ? = " + b);
+
+        //Find all the substrings of a specific length (e.g., all 3-letter substrings)
+        int k = 3;//substring length
+        String subString = "abcdef";//length = 6
+        Set<String> collect11 = IntStream.range(0, subString.length() - k + 1)
+                .mapToObj(t -> subString.substring(t, t + k))
+                .collect(Collectors.toSet());
+        System.out.println("collect11 = " + collect11);
+
+        //Map each character of "hello world" to its uppercase version
+        //String str = "hello world";
+        Map<String, String> collect12 = Arrays.stream(str.split(""))
+                .collect(
+                        Collectors.toMap(
+                                z -> z,
+                                String::toUpperCase,
+                                (oldVal, newVal) -> oldVal
+                        )
+                );
+        System.out.println("collect12 = " + collect12);
+
+
+        //DoubleStream asDoubleStream(); allowed in LongStream
+        //DoubleStream asDoubleStream() and LongStream asLongStream(); allowed in IntStream
+        //NOT POSSIBLE in DoubleStream
+        String numString = "384";//3+8+4=15
+        long sum1 = Arrays.stream(numString.split(""))
+                .map(Integer::valueOf)
+                .mapToInt(Integer::intValue)
+                .asLongStream()
+                .sum();
+        System.out.println("sum1 = " + sum1);
 
 
     }
