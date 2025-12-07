@@ -99,7 +99,7 @@ public class ArmstrongCheck {
         int one = Character.getNumericValue('1');
         System.out.println("one = " + one);//1
 
-        //This is the tricky one!
+        //THIS IS THE TRICKY ONE! BELOW PART NOT ABOVE
         //
         //👉 Here, you are not passing '1' (the character),
         //you’re passing the integer value 1, which Java interprets as Unicode code point U+0001.

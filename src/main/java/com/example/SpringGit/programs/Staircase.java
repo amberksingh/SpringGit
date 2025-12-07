@@ -26,7 +26,6 @@ public class Staircase {
     }
 
     public static void main(String[] args) {
-
         int n1 = 4;
         System.out.println("Ways to reach " + n1 + "th step : " + countWays(n1));
         n1 = 3;
@@ -40,13 +39,14 @@ public class Staircase {
         n1 = 5;
         System.out.println("Ways to reach " + n1 + "th step : " + countWays(n1));
 
+
         int n2 = 4;
         int m = 2;
         System.out.println("Variable steps : no.of ways to reach " + n1 + "th step : " + countWaysWithVariableSteps(n2, m));
 
 
         //FOR VARIABLE STEPS
-       //Let’s go step by step for n = 4 (top step) and m = 2 (you can take either 1 or 2 steps at a time).
+        //Let’s go step by step for n = 4 (top step) and m = 2 (you can take either 1 or 2 steps at a time).
         //
         //🧩 1️⃣ What the function means
         //countWaysWithVariableSteps(n, m)
