@@ -28,6 +28,9 @@ public class StaticStuff {
         clearCache();
         System.out.println("users = " + users);
 
+//        byte[] a = new byte[11];
+//        System.out.println(a.length);
+
     }
 
 }
