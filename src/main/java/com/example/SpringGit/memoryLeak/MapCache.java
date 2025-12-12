@@ -20,6 +20,7 @@ public class MapCache {
                     return size() > MAX_SIZE;
                 }
             };
+    LinkedHashMap<String, Object> linkedHashMap = new LinkedHashMap<>(MAX_SIZE, 0.75f, false);
 
 //✔ Fix 2 — Use proper cache library
 //    Caffeine (recommended):
@@ -27,6 +28,7 @@ public class MapCache {
 //            .maximumSize(500)
 //            .expireAfterWrite(10, TimeUnit.MINUTES)
 //            .build();
+
 //✔ Fix 3 — Periodically clear
     @Scheduled(fixedRate = 60000)
     public void cleanup() {

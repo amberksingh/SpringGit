@@ -2,6 +2,14 @@ package com.example.SpringGit.memoryLeak;
 
 public class ThreadLocalStuff {
 
+//    private static final ThreadLocal<byte[]> local = new ThreadLocal<>();
+//    try {
+//        local.set(new byte[10 * 1024 * 1024]); // heavy object
+//        // use it here
+//    } finally{
+//        local.remove();   // REQUIRED to avoid leak
+//    }
+
     private static ThreadLocal<String> userId = new ThreadLocal<>();
 
     public static void set(String id) {

@@ -1,6 +1,7 @@
 package com.example.SpringGit.interview;
 
 class Counter {
+
     int count = 0;
 
     synchronized void increment() {

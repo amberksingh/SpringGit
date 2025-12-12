@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@Component
+@Component
 @Slf4j
 public class ApplicationRunnerDemo implements ApplicationRunner {
 
@@ -43,9 +43,33 @@ public class ApplicationRunnerDemo implements ApplicationRunner {
         System.out.println("Non-option args: " + args.getNonOptionArgs());
 
         //Using Environment variable
-        System.out.println("Environment : Debug enabled? " + environment.getProperty("debug"));
-        System.out.println("Environment : Environment = " + environment.getProperty("env"));
+        System.out.println("Environment : Debug enabled? " + environment.getProperty("debug"));//empty/nothing prints
+        System.out.println("Environment : Environment = " + environment.getProperty("env"));//prod
         System.out.println("Active profiles: " + String.join(", ", environment.getActiveProfiles()));
+
+        //============//
+        //mvn spring-boot:run "-Dspring.profiles.active=prod" "-Dspring-boot.run.arguments=--debug --env=prod foo bar"
+        //All option names: [debug, env]
+        //Env value: [prod]
+        //Contains debug? true
+        //Environment = prod
+        //ApplicationArguments : Debug mode is ON
+        //Non-option args: [foo, bar]
+        //Environment : Debug enabled?
+        //Environment : Environment = prod
+        //Active profiles:
+
+        //=============//
+        //java -jar target/SpringGit-0.0.1-SNAPSHOT.jar --debug --env=prod foo bar --spring.profiles.active=prod
+        //All option names: [debug, env, spring.profiles.active]
+        //Env value: [prod]
+        //Contains debug? true
+        //Environment = prod
+        //ApplicationArguments : Debug mode is ON
+        //Non-option args: [foo, bar]
+        //Environment : Debug enabled?
+        //Environment : Environment = prod
+        //Active profiles: prod
 
 
         //java -jar myapp.jar --debug --env=prod startNow
@@ -58,7 +82,6 @@ public class ApplicationRunnerDemo implements ApplicationRunner {
         //spring.profiles.active in properties file
         //server.ssl.enabled=true
         //server.port=8443
-
 
        //You can run a Spring Boot project directly from the command line using Maven in several ways 👇
         //
@@ -136,6 +159,7 @@ public class ApplicationRunnerDemo implements ApplicationRunner {
         //
         //this works
         //You said:
+        //java -jar target/SpringGit-0.0.1-SNAPSHOT.jar --debug --env=prod foo bar --spring.profiles.active=prod
         //java -jar SpringGit-0.0.1-SNAPSHOT.jar --debug --env=prod foo bar --spring.profiles.active=prod convert to using mvn
         //Perfect 🎯 — yes, that’s the right and cross-platform safe way to pass Spring profile arguments when running via Maven,
         // especially on Windows PowerShell.

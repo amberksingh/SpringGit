@@ -168,6 +168,7 @@ public class QueueUsingPriorityQueue {
         //
         //“LET’S NOT EVEN ALLOW NULL IN PRIORITYQUEUE — IT MAKES NO SENSE TO HAVE AN UN-COMPARABLE ITEM.”
 
+        //priorityQueue.add(null);//no compilation error but throws NullPointerException
         //========PRIORITYQUEUE.ADD(NULL);//NOT ALLOWED SIMILAR TO TREESET AND TREEMAP KEY======
         System.out.println("polled : "+priorityQueue.poll());//elizabeth if Comparator.naturalOrder()
 

@@ -3,7 +3,7 @@ package com.example.SpringGit.config;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class MyStartupRunner implements CommandLineRunner {
 
     @Override
@@ -21,6 +21,20 @@ public class MyStartupRunner implements CommandLineRunner {
         App started. Running startup logic...
         Argument: foo
         Argument: bar*/
+
+        //mvn spring-boot:run "-Dspring.profiles.active=prod" "-Dspring-boot.run.arguments=--debug --env=prod foo bar"
+        //Argument: --debug
+        //Argument: --env=prod
+        //Argument: foo
+        //Argument: bar
+
+        //=============//
+        //java -jar target/SpringGit-0.0.1-SNAPSHOT.jar --debug --env=prod foo bar --spring.profiles.active=prod
+        //Argument: --debug
+        //Argument: --env=prod
+        //Argument: foo
+        //Argument: bar
+        //Argument: --spring.profiles.active=prod
 
 
 
