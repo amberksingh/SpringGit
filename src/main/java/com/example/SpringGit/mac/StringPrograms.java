@@ -61,7 +61,7 @@ public class StringPrograms {
         List<Character> list = str.chars()
                 .mapToObj(s -> (char) s)
                 .toList();
-        System.out.println("list = " + list);
+        System.out.println("list = " + list);//[h, e, l, l, o,  , w, o, r, l, d]
 
         str.chars()
                 .map(s -> (char) s)//still IntStream
@@ -213,6 +213,7 @@ public class StringPrograms {
                 .thenComparing(Map.Entry::getKey);
         Comparator<Map.Entry<String, Long>> entryComparator2 = Map.Entry.<String, Long>comparingByValue()
                 .thenComparing(Map.Entry::getKey, Comparator.reverseOrder());
+
         LinkedHashMap<String, Long> collect7 = Arrays.stream(charStringRepeating.split(""))
                 .collect(
                         Collectors.groupingBy(
@@ -259,6 +260,7 @@ public class StringPrograms {
         List<String> list5 = Stream.of(charStringRepeating.split(" "))
                 .sorted(comp1)
                 .toList();
+        //delimiter,prefix,suffix
         //.collect(Collectors.joining("-", "@", "#"));
         System.out.println("list5 = " + list5);
 

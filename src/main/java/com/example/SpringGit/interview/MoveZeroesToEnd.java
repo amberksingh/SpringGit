@@ -32,6 +32,7 @@ public class MoveZeroesToEnd {
             nums[pos] = 0;
             pos++;
         }
+        
         System.out.println("1st way : " + Arrays.toString(nums));
 
         //2nd way
@@ -40,6 +41,7 @@ public class MoveZeroesToEnd {
                 .filter(n -> n != 0)
                 .boxed()
                 .collect(Collectors.toCollection(ArrayList::new));
+        
         int zeroSize = nums1.length - nonZeroList.size();
         for (int j = 0; j < zeroSize; j++) {
             nonZeroList.add(0);
@@ -53,8 +55,17 @@ public class MoveZeroesToEnd {
                 IntStream.of(nums2).filter(n -> n == 0).boxed()
                 )
                 .toList();
-
         System.out.println("3rd way = " + list);
+        
+        int[] numsStream = {0, 1, 0, 3, 12};
+        Integer[] array = IntStream.concat(
+                        Arrays.stream(numsStream).filter(n -> n != 0),
+                        Arrays.stream(numsStream).filter(n -> n == 0)
+                )
+                .boxed()
+                .toArray(Integer[]::new);
+        System.out.println("Arrays.toString(array) = " + Arrays.toString(array));
+
 
         //4th way
         int[] nums3 = {0, 1, 0, 3, 12};

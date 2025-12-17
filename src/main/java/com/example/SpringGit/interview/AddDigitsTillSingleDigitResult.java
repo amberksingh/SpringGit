@@ -22,7 +22,6 @@ public class AddDigitsTillSingleDigitResult {
 
     static void addDigits(int num) {
 
-
         while (num > 9) {
             String value = String.valueOf(num);
             num = Arrays.stream(value.split(""))

@@ -17,6 +17,7 @@ public class WordFrequencyString {
                 .collect(
                         Collectors.groupingBy(
                                 x -> x,
+                                //supplier if needed
                                 Collectors.counting()
                         )
                 );

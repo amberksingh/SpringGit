@@ -13,7 +13,8 @@ public class FibonacciRecursive {
     public static void main(String[] args) {
 
         int n = 5;
-        for (int i = 0; i < n; i++) {
+        int n1 = 10;
+        for (int i = 0; i < n1; i++) {
             System.out.print(fibRecursive(i) + " ");
         }
     }

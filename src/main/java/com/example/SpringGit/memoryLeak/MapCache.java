@@ -1,5 +1,6 @@
 package com.example.SpringGit.memoryLeak;
 
+import org.slf4j.MDC;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -33,6 +34,10 @@ public class MapCache {
     @Scheduled(fixedRate = 60000)
     public void cleanup() {
         cache.clear();
+//        MDC.put("1", "hello");
+//        MDC.put("2", "world");
+//        MDC.get("1");
+//        MDC.get("2");
     }
 
 
@@ -44,6 +49,11 @@ public class MapCache {
     }
 
     public static void main(String[] args) {
+
+        MDC.put("1", "hello");
+        MDC.put("2", "world");
+        System.out.println(MDC.get("1"));
+        System.out.println(MDC.get("2"));
 
         MapCache.put("A", new byte[5 * 1024 * 1024]); // 5MB
         MapCache.put("B", new byte[5 * 1024 * 1024]);

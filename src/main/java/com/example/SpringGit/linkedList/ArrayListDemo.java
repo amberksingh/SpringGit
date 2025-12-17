@@ -127,6 +127,5 @@ public class ArrayListDemo {
                 .sorted(Comparator.reverseOrder())
                 .forEach(x -> System.out.print(x + " "));
 
-
     }
 }

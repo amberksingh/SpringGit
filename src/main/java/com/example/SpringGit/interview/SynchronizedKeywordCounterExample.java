@@ -8,6 +8,7 @@ class Counter {
         count++;
         System.out.println("count = " + count + "-" + Thread.currentThread().getName());
     }
+
     //BELOW IS A BETTER APPROACH
     //AtomicInteger integer = new AtomicInteger(0);
     //

@@ -3,6 +3,7 @@ package com.example.SpringGit.mac;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.ToIntFunction;
+import java.util.function.ToLongFunction;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -21,7 +22,7 @@ public class StreamDemo2 {
         list.add(1);
         list.add(6);
         list.add(3);
-        list.add(0);
+        list.add(0);//
         list.add(9);
         list.add(44);
         list.add(0);
@@ -78,6 +79,8 @@ public class StreamDemo2 {
 
         ToIntFunction<Integer> intFunction = (i) -> i.intValue();
         ToIntFunction<Integer> intFunction1 = Integer::intValue;
+        ToIntFunction<String> intFunction2 = Integer::parseInt;
+
         Optional<Integer> min = nums.stream()
                 .map(Integer::parseInt)
                 //.min(Comparator.comparingInt(intFunction1));
@@ -86,17 +89,28 @@ public class StreamDemo2 {
         if (min.isPresent())
             System.out.println("min : "+min.get());
 
-        Double value = new Double(10);
+        //Double value = new Double(10);
+        Double value = Double.valueOf(10);	//✅ Correct	Explicit conversion
+        //Double value = 10.0	//✅ Best	Most common
+        //Double.parseDouble("10")	//✅ Correct	From String
+
         System.out.println("value = " + value);
         System.out.println("value.doubleValue() : "+value.doubleValue());
         System.out.println("value.longValue() : "+value.longValue());
         System.out.println("value.intValue() : "+value.intValue());
         
         ////---mapToLong
+        ToLongFunction<Long> toLongFunction = Long::longValue;
+        ToLongFunction<String> stringToLongFunction = (j) -> Long.parseLong(j);
+        ToLongFunction<String> stringToLongFunction1 = Long::parseLong;
+        ToLongFunction<String> stringToLongFunction2 = Long::valueOf;
+
         Optional<Long> longMax = nums.stream()
                 .map(Long::parseLong)
+                //.mapToLong(Long::parseLong)
                 //.mapToLong(Long::longValue)
                 //.max(Comparator.comparingLong(Long::longValue))
+                //.max(Comparator.comparingLong(toLongFunction)
                 //.max(Comparator.comparing(Long::longValue));
                 .max(Comparator.reverseOrder());
                 //.max(Comparator.comparing(Long::longValue, Comparator.reverseOrder()));

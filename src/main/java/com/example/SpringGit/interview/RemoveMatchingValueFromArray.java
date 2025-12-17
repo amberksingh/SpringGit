@@ -14,7 +14,7 @@ public class RemoveMatchingValueFromArray {
         System.out.println("Initial nums array : " + Arrays.toString(nums));
         int val = 7;
         int pos = 0;
-        for (int i =0;i< nums.length;i++) {
+        for (int i =0; i < nums.length;i++) {
             if (nums[i]!=val) {
                 nums[pos] =nums[i];
                 pos++;

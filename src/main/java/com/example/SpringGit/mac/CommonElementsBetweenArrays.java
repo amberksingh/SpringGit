@@ -23,6 +23,8 @@ public class CommonElementsBetweenArrays {
 
         //
         IntFunction<Integer[]> intFunction = Integer[]::new;
+        IntFunction<String[]> strFunc = String[]::new;
+
         Set<Integer> collect = Arrays.stream(arr1)
                 .boxed()
                 .collect(Collectors.toSet());

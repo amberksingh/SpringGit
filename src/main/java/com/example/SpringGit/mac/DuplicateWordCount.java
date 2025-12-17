@@ -37,5 +37,7 @@ public class DuplicateWordCount {
                 .toList();
         System.out.println("list1 = " + list1);
 
+        Collections.nCopies(10, null);
+
     }
 }

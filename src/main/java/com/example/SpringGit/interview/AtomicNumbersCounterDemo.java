@@ -27,6 +27,7 @@ public class AtomicNumbersCounterDemo {
                 }
             }
         });
+
         Thread t2 = new Thread(() -> {
             for (int i = 0; i < 20; i++) {
                 counter.increment();

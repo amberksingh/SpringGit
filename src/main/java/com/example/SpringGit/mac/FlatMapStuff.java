@@ -265,7 +265,8 @@ If you want, I can also show:
 Just say “flatMap more examples”.
 
 You said:
-so A, B list is taken and then stream.of(A,B) but not pushed downstream in map? but in flatmap it pushes downward immediately or first a,b and then c,d and then flatten?
+so A, B list is taken and then stream.of(A,B) but not pushed downstream in map? but in flatmap it pushes downward
+*  immediately or first a,b and then c,d and then flatten?
 ChatGPT said:
 
 Great — this is the exact mental model you must understand.
@@ -412,19 +413,21 @@ Downstream sees:
 
 It flattens one list at a time during traversal.
 
-If you want, I can also draw a diagram-based explanation or show internal JDK source (Spliterator behavior) to make it even clearer.
+If you want, I can also draw a diagram-based explanation or show internal JDK source (Spliterator behavior) to make
+* it even clearer.
 
 You said:
-so pushing to downstream is same immediately in both, just map() pushes 2 streams 1 by 1 but flatmap does same but pushes values i.e A, B at once and then same way pushes C,D downstream?
+so pushing to downstream is same immediately in both, just map() pushes 2 streams 1 by 1 but flatmap does same
+*  but pushes values i.e A, B at once and then same way pushes C,D downstream?
 ChatGPT said:
 
 Exactly YES — that’s the correct and precise understanding.
 
 Let’s say it cleanly in one line:
 
-✅ Both map() and flatMap() push downstream immediately, BUT:
-map pushes the inner stream object
-flatMap pushes the values inside the inner stream
+✅ BOTH MAP() AND FLATMAP() PUSH DOWNSTREAM IMMEDIATELY, BUT:
+MAP PUSHES THE INNER STREAM OBJECT
+FLATMAP PUSHES THE VALUES INSIDE THE INNER STREAM
 
 That’s the only difference, but it changes EVERYTHING.
 
@@ -482,6 +485,7 @@ flatMap → [ "A", "B", "C", "D" ]
 public class FlatMapStuff {
 
     public static void main(String[] args) {
+        
         List<List<String>> list = List.of(
                 List.of("A", "B"),
                 List.of("C", "D")
@@ -568,6 +572,16 @@ public class FlatMapStuff {
                 .flatMapToLong(Arrays::stream)
                 .toArray();
         System.out.println("Arrays.toString(array2) = " + Arrays.toString(array2));
+        
+        //
+        List<Long[]> listOfLONGArray = List.of(
+                new Long[]{110L, 20L},
+                new Long[]{300L, 40L}
+        );
+        List<Long> list2 = listOfLONGArray.stream()
+                .flatMap(Stream::of)
+                .toList();
+        System.out.println("list2 = " + list2);
 
         //flatMapToDouble
         List<Double[]> listOfDoubleArray = List.of(

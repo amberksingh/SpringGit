@@ -1,5 +1,34 @@
 package com.example.SpringGit.mac;
 
+//Why i <= sqrt(num) is enough?
+//Because:
+//
+//If num = a * b, then at least one of the factors a or b must be ≤ √num
+//
+//Let’s see examples:
+//
+//🔸 Example 1: num = 36
+//Factors:
+//
+//(2, 18)
+//
+//(3, 12)
+//
+//(4, 9)
+//
+//(6, 6) ← square root
+//
+//After this, pairs like (9, 4) and (18, 2) repeat in reverse.
+//
+//✅ So if num has a divisor, it will be found before or at √num.
+//
+//🔸 Example 2: num = 37 (a prime)
+//sqrt(37) ≈ 6.08
+//
+//So we only check divisibility for: i = 2 to 6
+//
+//Since none of these divide 37, it's prime ✅
+
 public class PrimeCheck {
 
     static boolean isPrime(int number) {

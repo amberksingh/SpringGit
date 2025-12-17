@@ -90,7 +90,7 @@ public class LinkedListDemo {
 
         //push/pop
         //“Front” of the list == “top” of the stack.
-        linkedList.push("namit");//returns void - adds at the end. similar to addFirst
+        linkedList.push("namit");//returns void -  similar to addFirst
         System.out.println("list after pushing namit : " + linkedList);
         linkedList.push("shyam");
         String poppedElement = linkedList.pop();//removes from the end

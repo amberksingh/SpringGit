@@ -18,7 +18,8 @@ public class GoodBadString {
         LinkedHashSet<Integer> collect = Stream.of(s.split(""))
                 .map(c -> Collections.frequency(list, c))
                 .collect(
-                        Collectors.toCollection(() -> new LinkedHashSet<>())
+                        //Collectors.toCollection(() -> new LinkedHashSet<>())
+                        Collectors.toCollection((LinkedHashSet::new))
                 );
         if (collect.size() == 1)
             System.out.println(s + ": Good String");
