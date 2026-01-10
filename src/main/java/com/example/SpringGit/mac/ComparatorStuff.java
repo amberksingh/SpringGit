@@ -116,6 +116,7 @@ public class ComparatorStuff {
         System.out.println("list4 = " + list4);
 
         Comparator<String> desc4 = Comparator.comparing((String x) -> x).reversed();
+        //Comparator<String> desc5 = Comparator.comparing(x -> x.toString()).<String>reversed();
         List<String> list5 = list.stream()
                 .sorted(desc4)
                 .toList();

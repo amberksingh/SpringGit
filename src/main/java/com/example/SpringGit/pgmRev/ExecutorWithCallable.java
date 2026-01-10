@@ -30,7 +30,7 @@ public class ExecutorWithCallable {
             System.out.println("Just before future.get() " + Thread.currentThread().getName());
             String result = future.get();//"task result"
             System.out.println("Result of task : " + result + " : " + Thread.currentThread().getName());
-            System.out.println("after get() of future i.e main Thread on hold." + Thread.currentThread().getName());
+            System.out.println("after get() of future i.e main Thread on hold: " + Thread.currentThread().getName());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } catch (ExecutionException e) {

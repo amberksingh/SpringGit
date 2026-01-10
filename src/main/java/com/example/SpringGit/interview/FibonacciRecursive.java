@@ -14,7 +14,7 @@ public class FibonacciRecursive {
 
         int n = 5;
         int n1 = 10;
-        for (int i = 0; i < n1; i++) {
+        for (int i = 0; i < n1; i++) {//n1 is no.of elements not index
             System.out.print(fibRecursive(i) + " ");
         }
     }

@@ -48,6 +48,7 @@ public class ApplicationRunnerDemo implements ApplicationRunner {
         System.out.println("Active profiles: " + String.join(", ", environment.getActiveProfiles()));
 
         //============//
+        //mvn spring-boot:run "-Dspring-boot.run.profiles=dev" "-Dspring-boot.run.arguments=--debug foo bar"
         //mvn spring-boot:run "-Dspring.profiles.active=prod" "-Dspring-boot.run.arguments=--debug --env=prod foo bar"
         //All option names: [debug, env]
         //Env value: [prod]

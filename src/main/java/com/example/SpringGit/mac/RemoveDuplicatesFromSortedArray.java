@@ -53,16 +53,18 @@ public class RemoveDuplicatesFromSortedArray {
 
     static int removeDuplicates(int[] nums) {
 
+        System.out.println("original nums = " + Arrays.toString(nums));
         List<Integer> uniqueList = Arrays.stream(nums)
                 .distinct()
                 .boxed()
                 .toList();
+        System.out.println("uniqueList = " + uniqueList);
 
         for (int i = 0;i<uniqueList.size();i++) {
             nums[i] = uniqueList.get(i);
         }
         System.out.println("Array : "+Arrays.toString(nums));
-        System.out.println("size after removing dups : "+uniqueList.size());
+        System.out.println("list size after removing dups : "+uniqueList.size());
         return nums.length;
     }
 

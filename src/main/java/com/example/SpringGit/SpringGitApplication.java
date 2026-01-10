@@ -3,6 +3,8 @@ package com.example.SpringGit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.context.WebServerApplicationContext;
+import org.springframework.context.ApplicationContext;
 import org.springframework.retry.annotation.EnableRetry;
 
 @SpringBootApplication(
@@ -11,13 +13,22 @@ import org.springframework.retry.annotation.EnableRetry;
 //				org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.class
 //		}
 )
-@EnableRetry
+//@EnableRetry
 public class SpringGitApplication {
+
+    //private static final Logger log = LoggerFactory.getLogger(SpringGitApplication.class);
 
 
 	public static void main(String[] args) {
-		//How to disable the web server
 
+//        ApplicationContext context = new WebServerApplicationContext() {
+//        }
+
+		//How to disable the web server
+        //Spring context still runs
+        //
+        //If any non-daemon thread exists, JVM stays alive
+//      app doesn't exit after finishing lets say commandline runner..as in backgrounds non-daemon threads keep running.
 //		SpringApplication app = new SpringApplication(SpringGitApplication.class);
 //      app.setWebApplicationType(WebApplicationType.NONE);
 //		app.run(args);

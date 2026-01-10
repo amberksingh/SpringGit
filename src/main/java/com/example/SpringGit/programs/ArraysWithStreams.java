@@ -19,6 +19,7 @@ public class ArraysWithStreams {
         Set<String> collect = Stream.of(fruits)
                 .collect(Collectors.toSet());
         System.out.println("collect = " + collect);
+
         Set<String> collect1 = Arrays.stream(fruits)
                 .collect(Collectors.toSet());
         System.out.println("collect1 = " + collect1);
@@ -37,9 +38,20 @@ public class ArraysWithStreams {
                 .toList();//gives List of array not list of int
         System.out.println("list1 = " + list1);
 
+        //
+        System.out.println("Stream.of(nums) instead of Arrays.stream(). Primitive array int type flattening using flatMap");
+        Stream.of(nums)
+                .flatMapToInt(x -> Arrays.stream(x))
+                .forEach(n -> System.out.print(n+", "));
+
+        System.out.println("Stream.of(nums) instead of Arrays.stream().boxed() . Primitive array int type flattening using flatMap");
+        Stream.of(nums)
+                .flatMap(x -> Arrays.stream(x).boxed())
+                .forEach(n -> System.out.print(n+", "));
+
         List<Integer> list2 = Stream.of(wrapperInt)
                 .toList();
-        System.out.println("list2 = " + list2);
+        System.out.println("\nlist2 = " + list2);
 
         List<Integer> list3 = Arrays.stream(wrapperInt)
                 .toList();

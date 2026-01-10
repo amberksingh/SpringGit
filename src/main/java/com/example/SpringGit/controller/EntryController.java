@@ -30,6 +30,7 @@ public class EntryController {
     String defaultName;
 
     @GetMapping("/welcome")
+    //@RequestMapping(method = RequestMethod.GET, headers = "key=value", params = "key=value", produces = "application/vnd.demo-v2+json")
     public ResponseEntity<String> get() {
 
         System.out.println(defaultName);
@@ -69,17 +70,17 @@ public class EntryController {
     }
 
     //add in config file for entire app access through frontend at http://localhost:3000
-//    @Bean
-//        public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurer() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/**")   // allow all endpoints
-//                        .allowedOrigins("http://localhost:3000") // frontend origin
-//                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-//                        .allowedHeaders("*");
-//            }
-//        };
-//    }
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")   // allow all endpoints
+                        .allowedOrigins("http://localhost:3000") // frontend origin
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowedHeaders("*");
+            }
+        };
+    }
 
 }

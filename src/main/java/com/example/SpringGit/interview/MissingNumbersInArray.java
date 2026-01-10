@@ -19,14 +19,14 @@ public class MissingNumbersInArray {
         //Output: [5, 6]
         int[] nums = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
         //int[] nums = new int[]{5, 3, 2, 7, 6, 2, 3, 1};
-        for (int i = 0;i < nums.length;i++) {
+        for (int i = 0; i < nums.length;i++) {
             int index = Math.abs(nums[i]) - 1;
             nums[index] = -Math.abs(nums[index]);
         }
         System.out.println("Arrays.toString(nums) = " + Arrays.toString(nums));
 
         List<Integer> list = new ArrayList<>();
-        for (int j = 0;j< nums.length;j++) {
+        for (int j = 0;j < nums.length;j++) {
             if (nums[j] > 0) {
                 list.add(j+1);
             }

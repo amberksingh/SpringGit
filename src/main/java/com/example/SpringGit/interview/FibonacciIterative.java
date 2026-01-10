@@ -27,7 +27,7 @@ public class FibonacciIterative {
     }
 
     public static void main(String[] args) {
-        int n = 1;
+        int n = 1;//n is no.of elements not index here
         fibIterative(n);
         n= 5;
         fibIterative(n);

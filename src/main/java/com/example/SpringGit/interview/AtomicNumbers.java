@@ -28,6 +28,7 @@ public class AtomicNumbers {
         //AtomicReference
         //AtomicIntegerArray
         //AtomicLongArray
+
         AtomicInteger atomicInteger = new AtomicInteger(10);//10
         System.out.println("atomicInteger starting value = " + atomicInteger);//10
         System.out.println("atomicInteger.get() = " + atomicInteger.get());//10

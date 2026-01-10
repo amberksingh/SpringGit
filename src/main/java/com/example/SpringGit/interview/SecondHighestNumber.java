@@ -22,7 +22,7 @@ public class SecondHighestNumber {
             if (num > highest) {
                 secondHighest = highest;
                 highest = num;
-            } else if (num > secondHighest/* && num!=highest*/) {
+            } else if (num > secondHighest && num!=highest) {
                 secondHighest = num;
             }
         }

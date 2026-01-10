@@ -25,7 +25,7 @@ public class CompletableFutureVoidDemo {
     //Use when the task produces a result — like fetching data, computing something, etc.
 
     //uses the common ForkJoinPool if ExecutorService service = Executors.newFixedThreadPool(2); not used .
-    //if ExecutorService service = Executors.newFixedThreadPool(2); is used then those are not daemon threads(use thread pool)
+    //if ExecutorService service = Executors.newFixedThreadPool(2); is used then those are not daemon threads(uses thread pool)
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
@@ -52,7 +52,7 @@ public class CompletableFutureVoidDemo {
         System.out.println("Main thread before join() called: " + Thread.currentThread().getName());
 
         //task.get();//get() throws checked exceptions (ExecutionException, InterruptedException)
-        //task.join();
+        //Void join = task.join();
         //join() wraps exceptions in an unchecked CompletionException.
         //This is similar to future.get() — but join() doesn't require a try-catch.
 

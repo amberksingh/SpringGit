@@ -20,6 +20,7 @@ public class CommonElementsBetweenArrays {
                 .collect(Collectors.toCollection(HashSet::new));
         set1.retainAll(Arrays.stream(arr2).boxed().toList());
         System.out.println("common = " + set1);
+        //set1.stream().forEach(System.out::println);
 
         //
         IntFunction<Integer[]> intFunction = Integer[]::new;

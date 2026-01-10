@@ -3,6 +3,7 @@ package com.example.SpringGit.pgmRev;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 public class CompletableFutureValReturnDemo {
@@ -10,6 +11,9 @@ public class CompletableFutureValReturnDemo {
     public static void main(String[] args) throws InterruptedException {
 
         ExecutorService service = Executors.newFixedThreadPool(2);
+
+        BiFunction<String, String, Integer> biFunction = (s1, s2) -> s1.length() + s2.length();
+        System.out.println(biFunction.apply("abc", "hello"));
 
         //supplyAsync
         Supplier<String> supplier = () -> "Hello from supplyAsync!";
@@ -26,7 +30,7 @@ public class CompletableFutureValReturnDemo {
                     }
                     System.out.println("Task supplyAsync end: " + Thread.currentThread().getName());
                     return supplier.get();
-                }/*, service*/
+                }, service
         );
         System.out.println("Main thread just before join of supplyAsync: " + Thread.currentThread().getName());
         String result = supplyAsync.join();

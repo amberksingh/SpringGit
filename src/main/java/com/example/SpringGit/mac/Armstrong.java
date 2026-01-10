@@ -16,9 +16,10 @@ public class Armstrong {
         System.out.println("sum = " + sum);
 
         double sum1 = Stream.of(s.split(""))
-                .mapToInt(Integer::parseInt)
+                .mapToInt(Integer::parseInt)//ToIntFunction is the param for mapToInt() and returns IntStream
                 .mapToObj(num -> Math.pow(num, s.length()))
-                .reduce(Double::sum)
+                //.reduce(Double::sum)
+                .reduce((n1, n2) -> n1 + n2)
                 .orElse(0d);
         System.out.println("sum1 = " + sum1);
 
@@ -31,7 +32,7 @@ public class Armstrong {
         int sum = 0;
         while (number > 0) {
             int r = number % 10;
-            sum += Math.pow(r, s.length());
+            sum += Math.pow(r, s.length());//-> + important
             number = number / 10;
         }
         System.out.println("sum oldSkool: "+sum);

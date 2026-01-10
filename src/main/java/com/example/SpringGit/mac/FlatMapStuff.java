@@ -54,7 +54,7 @@ import java.util.stream.Stream;
 //
 //4. Answering your specific point
 //
-//we get 2 streams for a,b and one for c,d. then they are flattened into one stream i.e stream.of(a,b,c,d).?
+//we get 2 streams, one for a,b and one for c,d. then they are flattened into one stream i.e stream.of(a,b,c,d).?
 // when does flattening happen, after both iteration for each outer list?
 //
 //✅ You get two inner streams:
@@ -301,8 +301,8 @@ Step 2: Take ["C","D"]
         push DOWNSTREAM (one element)
 
 
-🔥 map DOES push downstream immediately — BUT what it pushes is a Stream object
-NOT the inner values.
+🔥 MAP DOES PUSH DOWNSTREAM IMMEDIATELY — BUT WHAT IT PUSHES IS A STREAM OBJECT
+NOT THE INNER VALUES.
 
 So after map:
 
@@ -501,6 +501,7 @@ public class FlatMapStuff {
                 )
                 .map(x -> {
                             System.out.println("x = " + x);
+                            Stream<String> stream = x.stream();
                             return x.stream();
                         }
                         //x is each element of the stream i.e List<String> then
@@ -589,7 +590,8 @@ public class FlatMapStuff {
                 new Double[]{90d, 100d}
         );
         List<Double> list1 = listOfDoubleArray.stream()
-                .flatMap(Stream::of)
+                //.flatMap(Stream::of)
+                .flatMap(Arrays::stream)
                 .toList();
         System.out.println("list1 = " + list1);
 

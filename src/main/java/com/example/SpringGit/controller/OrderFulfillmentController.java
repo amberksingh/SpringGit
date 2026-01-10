@@ -23,7 +23,9 @@ public class OrderFulfillmentController {
     public ResponseEntity<Order> processOrder(@RequestBody Order order) throws InterruptedException {
 
         service.processOrder(order); // SYNCHRONOUS
-//        // asynchronous
+
+
+        // asynchronous BUT DOESN'T ENSURE CORRECT SEQUENCE. SO USED CHAINING OF FUTURES BELOW USING thenCompose
 //        service.notifyUser(order);
 //        service.assignVendor(order);
 //        service.packaging(order);

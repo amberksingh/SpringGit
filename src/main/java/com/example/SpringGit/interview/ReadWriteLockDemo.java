@@ -61,6 +61,15 @@ public class ReadWriteLockDemo {
         t3.start();
         Thread t4 = new Thread(r4);
         t4.start();
+
+        try {
+            t1.join();
+            t2.join();
+            t3.join();
+            t4.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("End main...");
 
     }
